@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+    <title> Network Admin </title>
+
+   <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    
+  </head>
+
+
+
+  </head>
+  <body>
+
+
+
+<ul class="nav navbar-light" style="background-color: #e3f2fd;">
+ <li class="active"><a class="nav-link" href="{{ url_for('test',ip='192.168.0.1') }}"> Home <span class="sr-only">(current)</span></a></li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('router') }}" >Telnet</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('myrouter') }}" >Routers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('upload_file1') }}" >Upload Script</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('connection') }}" >Network</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('lan') }}" >LAN</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('mylogs') }}" >Logs</a>
+  </li>
+  <li class="nav-item">
+    <a type="button" class="btn btn-secondary" href="{{ url_for('logout') }}">Logout => </a> 
+  </li>
+
+</ul>
+
+
+
+<div class="card">
+  <div class="card-body">
+
+   <!-- Containers table -->
+
+                        <div class="panel-body">
+				<h2> Network Routers </h2>
+								<a href="{{ url_for('backup') }}" class="btn btn-primary active" role="button" aria-pressed="true"> Backup </a> </br></br>
+
+<a href="{{ url_for('sync') }}" class="btn btn-danger active" role="button" aria-pressed="true"> Sync with Global Server</a>
+				</br></br>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+			                        <th>IP </th><th>Username </th><th>password </th><th>Version </th>
+                                                
+						
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+					{% for c in route %}
+                                        <tr>
+						 {% for b in c %}
+  
+                                            <td>{{ b }}</td> 
+
+                                            {% endfor %}
+
+                                        </tr>
+					{% endfor %}
+
+
+
+
+
+
+
+
+
+				</tbody>
+                               
+
+   
+                                </table>
+				</div>
+
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+
+
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-body">
+
+<h4>SELECT ROUTER</h4>
+
+{% for c in route %}
+
+<a href="{{ url_for('test',ip=c[0]) }}"> {{ c[0] }} </a> </br></br>
+
+{% endfor %}
+
+
+
+
+  </div>
+</div>
+
+  </body>
+</html>
+
